@@ -1,0 +1,7 @@
+<h2>内容</h2>
+<p><%= @post.content %></p>
+
+<% if current_user?(@post.user) %>
+  <%= link_to "編集", edit_post_path(@post.id), class: "btn edit-btn" %>
+  <%= link_to "削除", post_path(@post.id), method: "delete", class: "btn destroy-btn", "data-confirm" => "本当に削除しますか？" %>
+<% end %>

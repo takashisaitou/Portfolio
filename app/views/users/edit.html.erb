@@ -1,0 +1,32 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+       <p><%= @user.errors.count %>件のエラーがあります。</p>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Eメール %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :部門 %><br />
+    <%= f.text_field :department %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存" %>
+  </div>
+<% end %>

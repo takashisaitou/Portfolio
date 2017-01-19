@@ -1,0 +1,8 @@
+<h1>投稿一覧</h1>
+
+
+<% @posts.each do |post| %>
+<p>内容：<%= link_to post.content, post_path(post.id) %></p>
+<% end %>
+
+<%= link_to "新規投稿", new_post_path %>

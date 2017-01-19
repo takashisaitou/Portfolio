@@ -1,0 +1,17 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= @post.errors.count %>件のエラー:</h2>
+
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  内容
+  <%= f.text_area :content, { class: "form-control content-field" } %>
+  <%= f.submit "保存", { class: "btn primary-btn" } %>
+<% end %>

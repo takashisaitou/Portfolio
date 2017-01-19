@@ -2,6 +2,7 @@
 
 
 <% @users.each do |user| %>
-<p><%= user.username %></p>
-<p><%= user.department %></p>
+<p>名前：<%= user.username %></p>
+<p>所属部門：<%= user.department %></p>
+<p>Eメール：<%= user.email %></p>
 <% end %>

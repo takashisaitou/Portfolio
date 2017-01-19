@@ -2,7 +2,7 @@
 
 <p>
   <strong>Title:</strong>
-  <%= link_to @place.title %>
+  <%= link_to @place.title, places_path %>
 </p>
 
 <p>
@@ -25,8 +25,8 @@
   <%= @place.longitude %>
 </p>
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+<%= link_to '畑の場所更新', edit_place_path(@place) %> |
+<%= link_to '畑の場所一覧へ', places_path %>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
