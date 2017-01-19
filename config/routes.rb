@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+
+  
+
+  resources :places
   # get 'mypages/show'
 
   devise_for :users
-  root to: 'home#index'
+  root to: 'users#index'
 
-  resource :mypage
+  
+  resources :users, only: [:show, :index]
+
 end

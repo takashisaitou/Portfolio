@@ -1,0 +1,7 @@
+<h1>社員一覧</h1>
+
+
+<% @users.each do |user| %>
+<p><%= user.username %></p>
+<p><%= user.department %></p>
+<% end %>

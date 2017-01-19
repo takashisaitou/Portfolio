@@ -4,13 +4,18 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :username %><br />
+    <%= f.label :名前 %><br />
     <%= f.text_field :username %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :Eメール %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :部門 %><br />
+    <%= f.text_field :department %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -18,7 +23,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :パスワード %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
@@ -27,7 +32,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :パスワード確認 %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
