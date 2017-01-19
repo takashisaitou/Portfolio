@@ -18,7 +18,7 @@ class GardensController < ApplicationController
   def create
     @garden = Garden.new(garden_params)
     if @garden.save
-      redirect_to @garden, notice: "投稿が保存されました"
+      redirect_to gardens_path, notice: "投稿が保存されました"
     else
       render :new
     end
