@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
 
-  
-
   resources :places
-  # get 'mypages/show'
-
   devise_for :users
-  root to: 'users#index'
-
-  
+  resources :gardens
   resources :users, only: [:show, :index]
+  root to: 'users#index'
 
 end

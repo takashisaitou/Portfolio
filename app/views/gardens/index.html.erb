@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>畑一覧</h1>
+
+<% @gardens.each do |garden| %>
+<p><%= garden.name %></p>
+<p><%= garden.herb %></p>
+<p><%= garden.content %></p>
+<p><%= garden.cropyields %></p>
+
+<% end %>
+
+<%= link_to "新規作成", new_garden_path %>

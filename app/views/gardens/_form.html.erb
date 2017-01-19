@@ -1,0 +1,37 @@
+<%= form_for(place) do |f| %>
+  <% if garden.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(garden.errors.count, "error") %> prohibited this garden from being saved:</h2>
+
+      <ul>
+      <% garden.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :畑の名前 %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ハーブの名前 %>
+    <%= f.text_field :herb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :畑状況 %>
+    <%= f.text_field :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :収穫量 %>
+    <%= f.text_field :cropyields %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存" %>
+  </div>
+<% end %>

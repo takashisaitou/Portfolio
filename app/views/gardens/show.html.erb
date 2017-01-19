@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @garden.name %></p>
+<p><%= @garden.herb %></p>
+<p><%= @garden.content %></p>
+<p><%= @garden.ropyields %></p>
+
+<%= link_to "更新", edit_garden_path(@garden.id) %>
+<%= link_to "削除", garden_path(@garden.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
