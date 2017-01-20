@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user,  only: [:show, :edit, :update]
 
   def index
+    @posts = Post.all.order(created_at: :desc)
     @users = User.all
     @places = Place.all
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
@@ -21,6 +22,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    file = params[:user][:image]
+    @user.set_image(file)
+
     if @user.update(user_params)
       redirect_to @user, notice: 'ユーザー情報が更新されました'
     else
