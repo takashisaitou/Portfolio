@@ -1,0 +1,7 @@
+<% @posts.each do |post| %>
+<p>投稿者：<%= post.user.username %></p>
+<p>内容：<%= link_to post.content, post_path(post.id) %></p>
+  <span>
+    <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+  </span>
+<% end %>

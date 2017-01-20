@@ -14,6 +14,7 @@
   
   <header class="navbar navbar-default">
     <div class="container">
+      <div id="logo"><%= link_to "sharend", root_path %></div>
       <nav>
           <% if user_signed_in? %>
           <strong><%= link_to current_user.username, current_user %></strong>
