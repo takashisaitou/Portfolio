@@ -1,7 +1,26 @@
 <% @posts.each do |post| %>
-<p>投稿者：<%= post.user.username %></p>
-<p>内容：<%= link_to post.content, post_path(post.id) %></p>
-  <span>
-    <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+<li>
+  <%= image_for(post.user) %>
+  <span class="text-field">
+    投稿者：<%= link_to post.user.username, user_path(post.user.id) %>
+    所属部署：<%= post.user.department %>
   </span>
+
+  <span><p>
+    <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+  </span>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      内容
+    </div>
+    <div class="panel-body">
+      <%= link_to post.content, post_path(post.id) %>
+    <% if post.image? %>
+        <%= image_tag post.image.url(post.user) %>
+    <% end %>
+    </div>
+  </div>
+</li>
 <% end %>
+<li><%= paginate @posts %></li>

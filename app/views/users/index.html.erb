@@ -1,12 +1,12 @@
-<h1>社員投稿一覧</h1>
-<%= render 'posts/post' %>
+<div class="container">
+  <h1>社員一覧</h1>
 
-<h1>社員一覧</h1>
-<% @users.each do |user| %>
-<P><%= image_for(user) %></P>
-<p>名前：<%= user.username %></p>
-<p>所属部門：<%= user.department %></p>
-<p>Eメール：<%= user.email %></p>
-<% end %>
+  <% @users.each do |user| %>
+    <P><%= image_for(user) %></P>
+    <p>名前：<%= link_to user.username, user_path(user.id) %></p>
+    <p>所属部門：<%= user.department %></p>
+    <p>Eメール：<%= user.email %></p>
+  <% end %>
 
-<%= render 'places/place' %>
+  <li><%= paginate @users %></li>
+</div>

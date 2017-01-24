@@ -1,3 +1,4 @@
+<div class="form-group">
 <%= form_for(place) do |f| %>
   <% if place.errors.any? %>
     <div id="error_explanation">
@@ -13,30 +14,41 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ハーブの種類 %>
+    <%= f.text_field :herbname, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+    <%= f.label :畑状況 %>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
+    <%= f.text_field :latitude, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
+    <%= f.text_field :longitude, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>

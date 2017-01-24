@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+  <div class="container">
+    <div class="row">
+
+<div class="col-md-4">
+  <h3><%= link_to current_user.username, current_user %></h3>
+  <li><%= image_for(current_user) %></li>
+
+  <h4>Eメール：<%= current_user.email %></h4>
+  <h4>所属部署：<%= current_user.department %></h4>
+
+
+  <li><%= render 'posts/form' %></li>
+</div>
+
+<!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
+<div class="col-md-8">
+
+  <h2>投稿一覧</h2>
+  <%= render 'posts/post' %>
+  </div>
+
+</div>
+
+  <%= render 'places/place' %>
+</div>
+<% else %>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+          <h1>Hello, world!</h1>
+          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+          <p><%= link_to 'サインアップ', new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+        </div>
+      </div>
+    </div>
+</div>
+<% end %>

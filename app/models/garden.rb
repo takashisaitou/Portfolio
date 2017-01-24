@@ -1,3 +1,4 @@
 class Garden < ApplicationRecord
-  # belongs_to :place
+  # has_one :place
+  belongs_to :place
 end

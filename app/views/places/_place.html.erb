@@ -1,6 +1,44 @@
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+
+<h2>畑の名前一覧</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ハウス一覧</th>
+        <th>備考</th>
+        <th>ハーブの種類</th>
+        <th>畑の状況</th>
+        <th>住所</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td><%= link_to place.title, place_path(place.id) %></td>
+          <td><%= place.description %></td>
+          <td><%= place.herbname %></td>
+          <td><%= place.content %></td>
+          <td><%= place.address %></td>
+          <td><%= place.latitude %></td>
+          <td><%= place.longitude %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+<br>
+
+<li><%= link_to '新規畑登録', new_place_path, class: "btn btn-primary" %></li>
+
+<h2>畑地図一覧</h2>
+  <div class="map_container">
+    <div id="map" class="map_canvas"></div>
+  </div>
+
 
 <script type="text/javascript">
     handler = Gmaps.build('Google');

@@ -1,3 +1,5 @@
+
+<div class="form-group">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div class="alert alert-danger">
@@ -13,25 +15,27 @@
 
   <div class="field">
     <%= f.label :名前 %><br />
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :Eメール %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :部門 %><br />
-    <%= f.text_field :department %>
+    <%= f.text_field :department, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :イメージ %><br />
-    <%= f.file_field :image %>
+    <%= f.file_field :image, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "保存" %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
+

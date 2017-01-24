@@ -1,37 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1><%= link_to '畑の場所一覧へ', places_path %></h1>
+  <h2>畑情報</h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= link_to @place.title, places_path %>
-</p>
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading"><sreong>ハウス名：<%= @place.title %></sreong></div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @place.description %>
-</p>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>備考:</strong>
+          <%= @place.description %></li>
+        <li class="list-group-item">
+          <strong>ハーブの名前:</strong>
+          <%= @place.herbname %></li>
+        <li class="list-group-item">
+          <strong>畑状況:</strong>
+          <%= @place.content %></li>
+        <li class="list-group-item">
+          <strong>Address:</strong>
+          <%= @place.address %></li>
+        <li class="list-group-item">
+          <strong>Latitude:</strong>
+          <%= @place.latitude %></li>
+          <li class="list-group-item">
+            <strong>Longitude:</strong>
+          <%= @place.longitude %></li>
+      </ul>
+    </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @place.address %>
-</p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @place.latitude %>
-</p>
+<%= link_to '畑情報更新', edit_place_path(@place), class: "btn btn-success" %>
+<%= link_to '削除', @place, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @place.longitude %>
-</p>
+  <div class="map_container">
+    <div id="map" class="map_canvas"></div>
+  </div>
 
-<%= link_to '畑の場所更新', edit_place_path(@place) %> |
-<%= link_to '畑の場所一覧へ', places_path %>
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
 <script type="text/javascript">
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){

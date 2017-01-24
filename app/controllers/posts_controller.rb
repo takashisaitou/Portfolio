@@ -11,7 +11,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
+    # @posts = Post.all
   end
 
   def edit
@@ -20,13 +21,14 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path, notice: "投稿が保存されました"
+      redirect_to root_path, notice: "投稿が保存されました"
     else
-      render :new
+      render 'home/top'
     end
   end
 
   def update
+
     if @post.update(post_params)
       redirect_to @post, notice: "投稿が更新されました"
     else
@@ -46,7 +48,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, :image)
     end
 
     def correct_user

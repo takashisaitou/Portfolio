@@ -1,21 +1,15 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
-  before_action :set_user,  only: [:show, :edit, :update]
+  before_action :set_user,  only: [:show, :edit, :update, :top]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
-    @users = User.all
-    @places = Place.all
-    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow place.description
-      marker.json({title: place.title})
-    end
+    # @users = User.all
+    @users = User.page(params[:page]).per(10).all
   end
 
   def show
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(2).order(created_at: :desc)
+    # @posts = Post.page(params[:page]).per(2).order(created_at: :desc)
   end
 
   def edit

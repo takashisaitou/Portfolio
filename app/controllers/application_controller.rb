@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def after_sign_in_path_for(resource)
-    users_path
+    # users_path
+    root_path
   end
 
   def after_sign_out_path_for(resource)
