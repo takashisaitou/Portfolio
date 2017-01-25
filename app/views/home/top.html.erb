@@ -11,6 +11,16 @@
 
 
   <li><%= render 'posts/form' %></li>
+
+  <%= search_form_for @q do |f| %>
+
+    <div class="form-group">
+      <%= f.label :title_cont, "畑の名前" %>
+      <%= f.search_field :title_cont, class: "form-control", placeholder: "畑の名前を入力してください" %>
+    </div>
+    <br />
+      <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 </div>
 
 <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->

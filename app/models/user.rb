@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username, presence: true, uniqueness: true
+  validates :department, presence: true
+
   has_many :posts
 
   def set_image(file)

@@ -12,36 +12,43 @@
  *
  *= require_tree .
  *= require_self
-
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
-  padding-top: 65px;
+  padding-top: 50px;
   color: #364a4d;
 }
 
+.profile_img {
+  width: 60px;
+  height: 60px;
+}
+
+.container-fluid {
+  padding-top: 40px;
+  // 背景画像を暗くする
+  background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05) ), url(herb.jpg);
+  background-size: cover;
+  // 背景画像の位置を決める
+  background-position: 50% 50%;
+  height: 600px;
+  // width: 100%;
+}
+
+.container-fluid h1 {
+  color: white!important;
+}
+
+.container-fluid p {
+  color: white;
+}
+
+
+
 .input-field {
   width: 50%;
-}
-
-.header-right {
-  float: right;
-  margin: 0 auto;
-}
-
-.header-right a {
-  color: white;
-  display: block;
-  text-decoration: none;
-}
-
-.header-right li {
-  line-height: 65px;
-  padding: 0 18px;
-  float: left;
-  color: white;
 }
 
 ul, li {
@@ -55,11 +62,12 @@ a {
 }
 
 #logo {
-  float: left;
-  font-size: 1.7em;
-  padding-top: 12px;
-  letter-spacing: -1px;
-  font-weight: bold;
+//   float: left;
+  font-size: 30px!important;
+  color: white!important;
+//   padding-top: 12px;
+//   letter-spacing: -1px;
+//   font-weight: bold;
 }
 
 #logo a {

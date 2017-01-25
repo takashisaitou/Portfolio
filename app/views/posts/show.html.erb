@@ -1,8 +1,9 @@
 <div class="container">
   <h2>内容</h2>
   <p><%= @post.content %></p>
-  <p><%= image_tag @post.image.url %></p>
-
+  <% if @post.image? %>
+    <p><%= image_tag @post.image.url %></p>
+  <% end %>
   <% if current_user?(@post.user) %>
     <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %>
     <%= link_to "削除", post_path(@post.id), method: "delete", class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>

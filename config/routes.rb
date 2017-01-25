@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-
+  # get "/search" => "places#search"
   resources :places
   devise_for :users
   resources :gardens

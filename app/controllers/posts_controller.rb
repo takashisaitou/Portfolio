@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -23,6 +23,10 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path, notice: "投稿が保存されました"
     else
+      @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
+      # @places = Place.all
+      @q = Place.search(params[:q])
+      @places = @q.result(distinct: true)
       render 'home/top'
     end
   end
@@ -30,7 +34,7 @@ class PostsController < ApplicationController
   def update
 
     if @post.update(post_params)
-      redirect_to @post, notice: "投稿が更新されました"
+      redirect_to root_path, notice: "投稿が更新されました"
     else
       render :edit
     end

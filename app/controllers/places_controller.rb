@@ -1,10 +1,12 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+        @q = Place.search(params[:q])
+    @places = @q.result(distinct: true)
+    # @places = Place.all
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
@@ -37,10 +39,9 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(place_params)
-
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: "#{@place.title} の情報を保存しました" }
+        format.html { redirect_to places_path, notice: "#{@place.title} の情報を保存しました" }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new }
@@ -54,7 +55,7 @@ class PlacesController < ApplicationController
   def update
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: "#{@place.title} の情報を更新しました" }
+        format.html { redirect_to places_path, notice: "#{@place.title} の情報を更新しました" }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
@@ -72,6 +73,11 @@ class PlacesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # def search
+    # @q = Place.search(params[:q])
+    # @places = @q.result(distinct: true)
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
