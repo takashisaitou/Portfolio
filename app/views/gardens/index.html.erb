@@ -1,9 +1,0 @@
-<p id="notice"><%= notice %></p>
-
-<h1>畑一覧</h1>
-
-<% @gardens.each do |garden| %>
-  <p>畑の名前：<%= link_to garden.name, garden_path(garden.id) %></p>
-<% end %>
-
-<%= link_to "新規作成", new_garden_path %>
