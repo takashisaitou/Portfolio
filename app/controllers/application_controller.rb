@@ -12,15 +12,17 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    new_user_session_path # ログアウト後に遷移するpathを設定
+    root_path # ログアウト後に遷移するpathを設定
   end
 
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
       devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:department])
       devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:email])
       devise_parameter_sanitizer.permit(:account_update, keys: [:department])
     end
 
