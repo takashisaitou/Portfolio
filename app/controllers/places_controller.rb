@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-        @q = Place.search(params[:q])
+    @q = Place.search(params[:q])
     @places = @q.result(distinct: true)
     # @places = Place.all
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
